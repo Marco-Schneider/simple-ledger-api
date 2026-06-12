@@ -1,3 +1,4 @@
+using SimpleLedgerAPI.Services;
 using SimpleLedgerAPI.Store;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddSingleton<IAccountStore, InMemoryAccountStore>();
 
 var app = builder.Build();
