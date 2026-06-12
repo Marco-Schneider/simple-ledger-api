@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleLedgerAPI\SimpleLedgerAPI.csproj" />
+  </ItemGroup>
+
 </Project>
