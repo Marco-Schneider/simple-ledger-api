@@ -36,7 +36,7 @@ namespace SimpleLedgerAPI.Services
         {
             lock (GetAccountLock(accountId))
             {
-                var account = _accountStore.GetAccount(accountId) ?? new Account(accountId, amount);
+                var account = _accountStore.GetAccount(accountId) ?? new Account(accountId, 0);
 
                 var updatedAccount = account with { Balance = account.Balance + amount };
                 _accountStore.SaveAccount(updatedAccount);
