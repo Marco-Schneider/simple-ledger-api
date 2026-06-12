@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLedgerAPI", "SimpleLedgerAPI\SimpleLedgerAPI.csproj", "{DEAA4164-87C2-444B-9118-24D3300F4B59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleLedgerAPI", "SimpleLedgerAPI\SimpleLedgerAPI.csproj", "{DEAA4164-87C2-444B-9118-24D3300F4B59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleLedgerAPI.Tests", "SimpleLedgerAPI.Test\SimpleLedgerAPI.Tests.csproj", "{B901A92D-E23A-4A20-8308-02BAE725521E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DEAA4164-87C2-444B-9118-24D3300F4B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEAA4164-87C2-444B-9118-24D3300F4B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEAA4164-87C2-444B-9118-24D3300F4B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B901A92D-E23A-4A20-8308-02BAE725521E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B901A92D-E23A-4A20-8308-02BAE725521E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B901A92D-E23A-4A20-8308-02BAE725521E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B901A92D-E23A-4A20-8308-02BAE725521E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
