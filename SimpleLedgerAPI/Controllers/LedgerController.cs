@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SimpleLedgerAPI.Domain;
 using SimpleLedgerAPI.Services;
 
 namespace SimpleLedgerAPI.Controllers
@@ -27,7 +28,7 @@ namespace SimpleLedgerAPI.Controllers
             if (!result.IsSuccess)
                 return NotFound(0);
 
-            return Ok(result);
+            return Ok(result.Data!.Balance);
         }
     }
 }
