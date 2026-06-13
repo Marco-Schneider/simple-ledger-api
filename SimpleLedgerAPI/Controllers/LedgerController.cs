@@ -17,7 +17,7 @@ namespace SimpleLedgerAPI.Controllers
         public IActionResult Reset()
         {
             _accountService.Reset();
-            return Ok();
+            return Ok("OK");
         }
 
         [HttpGet("/balance")]
