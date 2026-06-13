@@ -1,5 +1,6 @@
 using SimpleLedgerAPI.Services;
 using SimpleLedgerAPI.Store;
+using System.Text.Json.Serialization;
 
 public class Program
 {
@@ -8,11 +9,16 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+            });
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddScoped<IAccountService, AccountService>();
+        builder.Services.AddSingleton<IAccountService, AccountService>();
         builder.Services.AddSingleton<IAccountStore, InMemoryAccountStore>();
 
         var app = builder.Build();

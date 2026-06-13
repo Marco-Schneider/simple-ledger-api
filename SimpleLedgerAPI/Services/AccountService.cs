@@ -19,6 +19,11 @@ namespace SimpleLedgerAPI.Services
             return _accountLocks.GetOrAdd(accountId, _ => new object());
         }
 
+        private Account GetOrCreateAccount(string accountId)
+        {
+            return _accountStore.GetAccount(accountId) ?? new Account(accountId, 0);
+        }
+
         public Result<Account> GetBalance(string accountId)
         {
             lock (GetAccountLock(accountId))
@@ -36,7 +41,7 @@ namespace SimpleLedgerAPI.Services
         {
             lock (GetAccountLock(accountId))
             {
-                var account = _accountStore.GetAccount(accountId) ?? new Account(accountId, 0);
+                var account = GetOrCreateAccount(accountId);
 
                 var updatedAccount = account with { Balance = account.Balance + amount };
                 _accountStore.SaveAccount(updatedAccount);
@@ -82,7 +87,7 @@ namespace SimpleLedgerAPI.Services
                     if (origin.Balance < amount)
                         return Result<(Account, Account)>.Failure("Cannot process transference. Account has insufficient funds.");
 
-                    var destination = _accountStore.GetAccount(destinationId) ?? new Account(destinationId, 0);
+                    var destination = GetOrCreateAccount(destinationId);
 
                     var updatedOrigin = origin with { Balance = origin.Balance - amount };
                     var updatedDestination = destination with { Balance = destination.Balance + amount };
