@@ -29,7 +29,8 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+        // In order to run to expose the local http profile, we can't use the HTTPS Redirection pipeline
+        //app.UseHttpsRedirection();
 
         app.UseAuthorization();
 
