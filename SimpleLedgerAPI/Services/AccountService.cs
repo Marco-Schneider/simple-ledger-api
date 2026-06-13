@@ -1,4 +1,4 @@
-﻿using SimpleLedgerAPI.Domain;
+using SimpleLedgerAPI.Domain;
 using SimpleLedgerAPI.Store;
 using System.Collections.Concurrent;
 
@@ -6,10 +6,10 @@ namespace SimpleLedgerAPI.Services
 {
     public class AccountService : IAccountService
     {
-        private readonly InMemoryAccountStore _accountStore;
+        private readonly IAccountStore _accountStore;
         private readonly ConcurrentDictionary<string, object> _accountLocks = new();
 
-        public AccountService(InMemoryAccountStore accountStore)
+        public AccountService(IAccountStore accountStore)
         {
             _accountStore = accountStore;
         }
