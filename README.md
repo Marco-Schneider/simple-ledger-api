@@ -1,5 +1,9 @@
 # Simple Ledger API
 
+[![.NET Build & Test](https://github.com/Marco-Schneider/simple-ledger-api/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/Marco-Schneider/simple-ledger-api/actions/workflows/dotnet.yml)
+[![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/download/dotnet/8.0)
+[![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-8.0-512BD4?logo=dotnet&logoColor=white)](https://learn.microsoft.com/en-us/aspnet/core/)
+
 A simple banking API built with **ASP.NET Core (.NET 8)** developed as part of a software engineering take-home assignment. The implementation prioritises correctness, thread safety, and testability over speculative abstraction.
 
 ---
@@ -8,26 +12,26 @@ A simple banking API built with **ASP.NET Core (.NET 8)** developed as part of a
 
 - [Overview](#overview)
 - [Architecture](#architecture)
-  - [Project Structure](#project-structure)
-  - [Design Philosophy: KISS over Premature SOLID](#design-philosophy-kiss-over-premature-solid)
-  - [Domain Model](#domain-model)
-- [API Reference](#api-reference)
+  - [Project structure](#project-structure)
+  - [Design philosophy](#design-philosophy)
+  - [Domain model](#domain-model)
+- [API reference](#api-reference)
   - [POST /reset](#post-reset)
   - [GET /balance](#get-balance)
   - [POST /event](#post-event)
-- [Key Engineering Decisions](#key-engineering-decisions)
-  - [Concurrency & Data Integrity](#concurrency--data-integrity)
-  - [Result\<T\> Pattern — No Exception-Driven Flow Control](#resultt-pattern--no-exception-driven-flow-control)
-  - [JSON Serialisation Contract](#json-serialisation-contract)
-- [Testing Strategy](#testing-strategy)
-  - [Unit Tests — State-Based, Not Interaction-Based](#unit-tests--state-based-not-interaction-based)
-  - [Integration Tests — Lifecycle-Isolated End-to-End](#integration-tests--lifecycle-isolated-end-to-end)
-- [How to Run Locally](#how-to-run-locally)
+- [Key engineering decisions](#key-engineering-decisions)
+  - [Concurrency & data integrity](#concurrency--data-integrity)
+  - [Result\<T\> pattern | No exception-driven flow control](#resultt-pattern--no-exception-driven-flow-control)
+  - [JSON serialisation contract](#json-serialisation-contract)
+- [Testing strategy](#testing-strategy)
+  - [Unit tests | state-based, not interaction-based](#unit-tests--state-based-not-interaction-based)
+  - [Integration tests | Lifecycle-isolated end-to-end](#integration-tests--lifecycle-isolated-end-to-end)
+- [How to run locally](#how-to-run-locally)
   - [Prerequisites](#prerequisites)
   - [Running the API](#running-the-api)
-  - [Exposing to the Internet via ngrok](#exposing-to-the-internet-via-ngrok)
-- [Running the Tests](#running-the-tests)
-- [Technical Debt & Trade-Offs](#technical-debt--trade-offs)
+  - [Exposing to the internet via ngrok](#exposing-to-the-internet-via-ngrok)
+- [Running the tests](#running-the-tests)
+- [Technical debt & trade-Offs](#technical-debt--trade-offs)
 
 ---
 
@@ -387,5 +391,5 @@ The following decisions carry known trade-offs that are acceptable for the scope
 | `Reset()` on `IAccountService` | Violates ISP; admin operations mixed with business operations | Extract `IAdminService` or protect behind an admin-only controller with auth |
 | Anemic Domain Model | Balance arithmetic in the service layer; domain object carries no self-protection | Introduce a Rich Domain Model with invariant enforcement on `Account` if business rules grow in complexity |
 | No authentication / authorisation | All endpoints are publicly accessible | Add JWT bearer auth or API key middleware; scope `Reset` and write operations to authenticated principals |
-| `ngrok` for external access | Requires the developer's machine to be running; ephemeral tunnel URL changes on restart | Deploy to a container platform (Dockerfile is already included) or a managed PaaS (e.g., Azure Container Apps, Railway) |
+| `ngrok` for external access | Requires the developer's machine to be running; ephemeral tunnel URL changes on restart | Deploy to a managed PaaS (e.g., Azure Web App, Azure Container Apps, Railway) |
 | HTTP profile on port `5164` | Differs from the `5000` convention sometimes expected by graders | Override with `ASPNETCORE_URLS=http://+:5000` or `dotnet run --urls http://+:5000` if the grader hardcodes port 5000 |
