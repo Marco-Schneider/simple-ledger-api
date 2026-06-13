@@ -31,6 +31,7 @@ A simple banking API built with **ASP.NET Core (.NET 8)** developed as part of a
   - [Running the API](#running-the-api)
   - [Exposing to the internet via ngrok](#exposing-to-the-internet-via-ngrok)
 - [Running the tests](#running-the-tests)
+- [Development process](#development-process)
 - [Technical debt & trade-Offs](#technical-debt--trade-offs)
 
 ---
@@ -378,6 +379,17 @@ dotnet test --logger "console;verbosity=detailed"
 ```
 
 Expected output: all tests pass, including the concurrent transfer stress test.
+
+---
+
+## Development Process
+
+This project was developed iteratively using **GitHub** as the primary platform for planning, tracking, and reviewing work.
+
+- **Issues** were used to define and scope individual pieces of work — each one documents the context, constraints, and intent behind a feature or decision before any code was written.
+- **Pull Requests** contain detailed descriptions of the changes introduced, the reasoning behind implementation choices, alternatives considered, and references back to the issues they resolve. They serve as a written record of the decision-making process throughout the project's lifecycle.
+
+For a deeper look into how the project evolved — including design discussions, trade-off analyses, and implementation notes — the [issues](https://github.com/Marco-Schneider/simple-ledger-api/issues) and [pull requests](https://github.com/Marco-Schneider/simple-ledger-api/pulls) on this repository are the most detailed source of context.
 
 ---
 
