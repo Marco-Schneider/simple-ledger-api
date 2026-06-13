@@ -12,7 +12,7 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddScoped<IAccountService, AccountService>();
+        builder.Services.AddSingleton<IAccountService, AccountService>();
         builder.Services.AddSingleton<IAccountStore, InMemoryAccountStore>();
 
         var app = builder.Build();
