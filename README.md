@@ -6,6 +6,8 @@
 
 A simple banking API built with **ASP.NET Core (.NET 8)** developed as part of a software engineering take-home assignment. The implementation prioritises correctness, thread safety, and testability over speculative abstraction.
 
+Repository is available at GitHub: https://github.com/Marco-Schneider/simple-ledger-api
+
 ---
 
 ## Table of Contents
